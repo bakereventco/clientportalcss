@@ -1,301 +1,270 @@
-@charset "utf-8";
-/* Custom Theme for Client Portal - Based on stylesheet_djep_1_.css */
-/* Branding: Primary Yellow (#ffde59), Black (#000000), White (#ffffff) */
-/* Typography: Poppins for headings, Open Sans for body text */
-/* Tone: Friendly, approachable, professional */
 
-@import url(https://djep21.com/clients/includes/stylesheet_updates.css);
+/* =============================================================
+   Baker Event Co – Client Portal Custom Theme (v1.0)
+   Author: ChatGPT
+   Notes:
+   - Safe for portals that block external font imports (no @import).
+   - Designed to be linked via "Custom Theme CSS" URL and load after base CSS.
+   - Uses brand tokens (yellow/black/white) and system font stacks.
+   ============================================================= */
 
-/* General Layout */
-html {overflow-y: scroll; text-decoration: none;}
-a {text-decoration: none;}
-.djep-cursorpointer {cursor: pointer;}
+/* 1) Brand tokens (CSS Variables) */
+:root {
+  --bec-yellow: #ffde59;
+  --bec-black: #000000;
+  --bec-white: #ffffff;
 
-body.djep-body {
-    padding: 0;
-    width: 100%;
-    height: auto !important;
-    height: 100%;
-    min-height: 100%;
-    color: #000000; /* Black */
-    background-color: #ffde59; /* Primary Yellow */
-    background-repeat: repeat-x;
-    background-position: top left;
-    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
-    font-size: 14px; /* Increased for readability */
-    margin: 0;
+  /* Neutrals */
+  --bec-gray-50:  #fcfcfc;
+  --bec-gray-100: #f6f6f6;
+  --bec-gray-200: #ededed;
+  --bec-gray-300: #dcdcdc;
+  --bec-gray-600: #666666;
+
+  /* Interactive shades */
+  --bec-yellow-600: #e6c84f; /* hover */
+  --bec-yellow-700: #d1b746; /* active */
 }
 
-#djep-page, #djep-guestrequestpage {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    height: auto !important;
+/* 2) Typography (font-safe: no external imports) */
+body, #djep-content, #djep-guestrequestcontent {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
+  color: var(--bec-black) !important;
+  background: var(--bec-white) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Headings & title bars use a slightly bolder, modern stack */
+h1, h2, h3,
+.djep-titlebar, .djep-titlebarsmall, .djep-titlebarsmaller {
+  font-family: "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--bec-black) !important;
+}
+
+/* 3) Containers */
 #djep-content, #djep-guestrequestcontent {
-    border: 1px solid #000000; /* Black */
-    padding: 10px;
-    text-align: left;
-    margin: 0 auto;
-    width: 800px; /* VERY IMPORTANT - DNE */
-    border-radius: 8px; /* Softer corners */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    background: #ffffff; /* White - VERY IMPORTANT - DNE */
-    overflow: hidden;
+  border: 1px solid var(--bec-gray-300) !important;
+  background: var(--bec-white) !important;
+  box-shadow: rgba(0,0,0,0.08) 0 2px 8px !important;
+  border-radius: 8px !important;
 }
 
-#djep-header {
-    text-align: center;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
+/* Section title bars with left accent */
+.djep-titlebar, .djep-titlebarsmall, .djep-titlebarsmaller {
+  background: var(--bec-white) !important;
+  border: 1px solid var(--bec-gray-300) !important;
+  color: var(--bec-black) !important;
+  position: relative;
+}
+.djep-titlebar::before,
+.djep-titlebarsmall::before,
+.djep-titlebarsmaller::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--bec-yellow);
+  border-radius: 4px 0 0 4px;
 }
 
-/* Navigation Bar */
-#djep-navbar {margin: 0 auto; width: 800px;}
-ul#djep-navigation {
-    height: 36px;
-    margin: 0 auto;
-    padding: 20px 10px 0 10px;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    list-style: none;
+/* 4) Navigation */
+#djep-navbar { max-width: 800px !important; }
+ul#djep-navigation li,
+ul#djep-navigation li a {
+  background: var(--bec-black) !important;
+  border-color: var(--bec-black) !important;
 }
-
-ul#djep-navigation li {
-    border-radius: 8px; /* Softer corners */
-    float: left;
-    width: 104px;
-    margin: 0 5px 0 0;
-    background-color: #ffde59; /* Primary Yellow */
-    border: solid 1px #000000; /* Black */
-    position: relative;
-    z-index: 1;
-    list-style: none;
+ul#djep-navigation li a:link,
+ul#djep-navigation li a:visited {
+  color: var(--bec-white) !important;
+  text-transform: none !important;
+  letter-spacing: 0.2px !important;
+  font-weight: 600;
 }
-
-ul#djep-navigation li a:link, ul#djep-navigation li a:visited {
-    border-radius: 8px;
-    display: block;
-    text-align: center;
-    width: 104px;
-    height: 40px;
-    line-height: 38px;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 13px; /* Slightly larger */
-    font-weight: bold;
-    color: #000000; /* Black */
-    letter-spacing: 1px;
-    outline: none;
-    float: left;
-    background: #ffde59; /* Primary Yellow */
-    transition: background-color 0.3s ease;
-}
-
 ul#djep-navigation li a:hover {
-    background-color: #ffffff; /* White on hover */
-    color: #000000; /* Black */
+  background-color: var(--bec-yellow) !important;
+  color: var(--bec-black) !important;
+}
+ul#djep-navigation li.selected a:link,
+ul#djep-navigation li.selected a:visited {
+  background: var(--bec-yellow) !important;
+  color: var(--bec-black) !important;
+  border: 1px solid var(--bec-yellow) !important;
 }
 
-/* Typography */
-h1.djep-h1 {
-    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 34px; /* Slightly larger */
-    color: #000000; /* Black */
-    margin: 21px 0;
-}
-h2.djep-h2 {
-    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
-    font-size: 26px; /* Slightly larger */
-    color: #000000; /* Black */
-    margin: 21px 0;
-}
-h3.djep-h3 {
-    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
-    font-size: 20px; /* Slightly larger */
-    color: #000000; /* Black */
-}
-p.djep-p-standard {
-    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5; /* Improved readability */
+/* 5) Status rows (fees, balances) */
+.djep-balanceduerow,
+.djep-totalfeerow,
+.djep-totaldepositrow,
+.djep-balancepaidrow,
+.djep-totalfeerow span {
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  letter-spacing: .3px !important;
 }
 
-/* Title Bars */
-.djep-titlebar {
-    display: block;
-    width: 96%;
-    background-color: #ffde59; /* Primary Yellow */
-    border-color: #000000; /* Black */
-    border-style: solid;
-    border-width: 1px 0;
-    font-weight: bold;
-    margin: 20px auto;
-    padding: 12px 20px; /* Slightly more padding */
-    font-size: 16px; /* Larger for approachability */
-    color: #000000; /* Black */
+.djep-balanceduerow {
+  background-color: var(--bec-yellow) !important;
+  color: var(--bec-black) !important;
+}
+.djep-balancepaidrow {
+  background-color: #eaffd4 !important; /* soft green */
+  color: var(--bec-black) !important;
+}
+.djep-totalfeerow,
+.djep-totalfeerow span {
+  background-color: var(--bec-gray-100) !important;
+  color: var(--bec-black) !important;
+}
+.djep-totaldepositrow {
+  background-color: #ffe3e6 !important; /* soft rose */
+  color: var(--bec-black) !important;
 }
 
-/* Form Elements */
-#djep-form-div {
-    background-color: #ffffff; /* White */
-    padding: 15px;
-    border-radius: 4px;
+/* 6) Buttons (flat brand style) */
+.djep-planeventbutton,
+.djep-eventdetailsbutton,
+.djep-readviewbutton,
+.djep-searchbutton,
+.djep-actionbutton,
+.djep-logoutbutton,
+.djep-clipboardbutton,
+.djep-songideabutton,
+.djep-toplistbuttons,
+.djep-toplistbuttons2,
+.djep-toplistbuttons3,
+.djep-toplistbuttons4,
+.djep-toplistbuttons5,
+.djep-specialsongbutton,
+.djep-paymentbutton,
+button, .button, [type="button"], [type="submit"] {
+  background: var(--bec-yellow) !important;
+  color: var(--bec-black) !important;
+  border: 1px solid var(--bec-yellow) !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  cursor: pointer;
 }
+
+.djep-planeventbutton:hover,
+.djep-eventdetailsbutton:hover,
+.djep-readviewbutton:hover,
+.djep-searchbutton:hover,
+.djep-actionbutton:hover,
+.djep-logoutbutton:hover,
+.djep-clipboardbutton:hover,
+.djep-songideabutton:hover,
+.djep-toplistbuttons:hover,
+.djep-toplistbuttons2:hover,
+.djep-toplistbuttons3:hover,
+.djep-toplistbuttons4:hover,
+.djep-toplistbuttons5:hover,
+.djep-specialsongbutton:hover,
+.djep-paymentbutton:hover,
+button:hover, .button:hover, [type="button"]:hover, [type="submit"]:hover {
+  background: var(--bec-yellow-600) !important;
+  border-color: var(--bec-yellow-600) !important;
+  color: var(--bec-black) !important;
+}
+.djep-planeventbutton:active,
+.djep-eventdetailsbutton:active,
+.djep-readviewbutton:active,
+.djep-searchbutton:active,
+.djep-actionbutton:active,
+.djep-logoutbutton:active,
+.djep-clipboardbutton:active,
+.djep-songideabutton:active,
+.djep-toplistbuttons:active,
+.djep-toplistbuttons2:active,
+.djep-toplistbuttons3:active,
+.djep-toplistbuttons4:active,
+.djep-toplistbuttons5:active,
+.djep-specialsongbutton:active,
+.djep-paymentbutton:active,
+button:active, .button:active, [type="button"]:active, [type="submit"]:active {
+  background: var(--bec-yellow-700) !important;
+  border-color: var(--bec-yellow-700) !important;
+}
+
+/* 7) Inputs */
+input, select, textarea, .djep-musicsearchform,
 input.djep-input, select.djep-select, textarea.djep-textarea {
-    vertical-align: middle;
-    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px; /* Larger for readability */
+  border: 1px solid var(--bec-gray-300) !important;
+  background: var(--bec-white) !important;
+  color: var(--bec-black) !important;
+}
+input:focus, select:focus, textarea:focus, .djep-musicsearchform:focus,
+input.djep-input:focus, select.djep-select:focus, textarea.djep-textarea:focus {
+  outline: 3px solid var(--bec-yellow) !important;
+  outline-offset: 1px;
 }
 
-.djep-submit input {
-    width: 60px; /* Slightly wider */
-    padding: 10px 15px;
-    background: #ffde59; /* Primary Yellow */
-    border: 1px solid #000000; /* Black */
-    font-size: 14px;
-    color: #000000; /* Black */
-    cursor: pointer;
-    border-radius: 6px;
+/* 8) Music selections / tabs */
+.djep-requestonlytitle,
+.djep-music_selections_navigation {
+  background: var(--bec-white) !important;
+  border: 1px solid var(--bec-gray-300) !important;
+}
+.djep-music_selections_navigation li a {
+  background: var(--bec-white) !important;
+  border: 1px solid transparent !important;
+  color: var(--bec-black) !important;
+  font-weight: 600;
+}
+.djep-music_selections_navigation li a:hover {
+  border-color: var(--bec-yellow) !important;
+  background: var(--bec-yellow) !important;
+  color: var(--bec-black) !important;
+}
+.djep-music_selections_navigation-active a {
+  background: var(--bec-yellow) !important;
+  border-color: var(--bec-yellow) !important;
+  color: var(--bec-black) !important;
 }
 
-/* Playlist and Music Sections */
-.djep-playlistbox {background-color: #ffffff; /* White */ text-align: left;}
-.djep-playlistboxmustplay {background-color: #fff8e1; /* Light yellow tint */ text-align: left;}
-.djep-playlistboxdonotplay {background-color: #ffebeb; /* Light red tint */ text-align: left;}
-.djep-playlistboxplayifposs {background-color: #f5f5f5; /* Light gray */ text-align: left;}
-.djep-playlistboxdedications {background-color: #f0f7ff; /* Light blue tint */ text-align: left;}
-.djep-playlistboxonlyrequest {background-color: #f3e8ff; /* Light purple tint */ text-align: left;}
+/* 9) Tables */
+.djep-table-headers, .djep-databasetableheader {
+  background: var(--bec-gray-100) !important;
+  color: var(--bec-black) !important;
+  border-color: var(--bec-gray-300) !important;
+}
+.djep-odd { background: #fafafa !important; }
+.djep-even { background: #ffffff !important; }
+.djep-tablehover { background-color: rgba(0,0,0,0.06) !important; }
 
-/* Buttons */
-.djep-planeventbutton {
-    box-shadow: inset 0px 1px 0px 0px #ffffff;
-    background: linear-gradient(to bottom, #ffde59, #ffcb33); /* Primary Yellow gradient */
-    border-radius: 6px;
-    border: 1px solid #000000; /* Black */
-    display: inline-block;
-    color: #000000; /* Black */
-    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 6px 25px;
-    margin-top: -5px;
-    text-align: center;
-    text-decoration: none;
+/* 10) Alerts / notices */
+.djep-titlebarsmallalert {
+  background-color: #ffe3e6 !important;
+  color: var(--bec-black) !important;
 }
-.djep-planeventbutton:hover {
-    background: linear-gradient(to bottom, #ffcb33, #ffde59); /* Reverse gradient */
+.djep-titlebarconfirm, .djep-titlebarmusicconfirm {
+  background: #eaffd4 !important;
+  color: var(--bec-black) !important;
+  border: 1px solid var(--bec-gray-300) !important;
 }
-.djep-planeventbutton:active {
-    position: relative;
-    top: 1px;
+.djep-titlebarnotices {
+  background: #fffbe6 !important;
+  color: var(--bec-black) !important;
+  border: 2px solid var(--bec-yellow) !important;
 }
 
-/* Mobile Styles */
-.djepm-toplistbuttons {
-    background: linear-gradient(to bottom, #ffde59, #ffcb33); /* Primary Yellow gradient */
-    border: 1px solid #000000; /* Black */
-    display: inline-block;
-    color: #000000; /* Black */
-    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    width: 31%;
-    height: 28px;
-    padding-top: 6px;
-    margin-top: 3px;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-radius: 6px;
-}
-.djepm-toplistbuttons:hover {
-    background: linear-gradient(to bottom, #ffcb33, #ffde59); /* Reverse gradient */
-    color: #000000;
-}
+/* 11) Links */
+a { color: var(--bec-black) !important; }
+a:hover { color: var(--bec-black) !important; text-decoration: underline; }
 
-/* Event, Email, and Meetings Boxes */
-.djep-eventlistbox {
-    background: #ffffff; /* White */
-    border: 1px solid #000000; /* Black */
-    border-radius: 4px;
-    color: #000000;
-    margin-bottom: 20px;
-    overflow: hidden;
+/* 12) Utilities */
+.bec-pill {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 9999px;
+  background: var(--bec-yellow);
+  color: var(--bec-black);
+  font-weight: 700;
+  border: 1px solid var(--bec-yellow);
 }
-.djep-latestemailsbox {
-    background: #ffffff; /* White */
-    border: 1px solid #000000; /* Black */
-    border-radius: 4px;
-    color: #000000;
-    margin-bottom: 20px;
-    overflow: hidden;
-    width: 48%;
-    float: left;
-    margin: 5px;
-}
-.djep-latestemailsbox a {
-    background: linear-gradient(to bottom, #ffde59, #ffcb33); /* Primary Yellow gradient */
-    border: 1px solid #000000; /* Black */
-    border-radius: 6px;
-    color: #000000;
-    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
-    font-size: 14px;
-    padding: 6px 12px;
-    text-decoration: none;
-}
-.djep-latestemailsbox a:hover {
-    background: linear-gradient(to bottom, #ffcb33, #ffde59);
-}
-.djep-latestemailsbox table tr {
-    background: #ffffff; /* White */
-    color: #000000; /* Black */
-    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
-    font-size: 14px;
-}
-.djep-latestemailsbox table tr:hover {
-    background: #fff8e1; /* Light yellow tint */
-}
-.djep-upcomingmeetingsbox {
-    background: #ffffff; /* White */
-    border: 1px solid #000000; /* Black */
-    border-radius: 4px;
-    color: #000000;
-    margin-bottom: 20px;
-    overflow: hidden;
-    width: 48%;
-    float: left;
-    margin: 5px;
-}
-
-/* Countdown Timer */
-#djep-countdownclock {
-    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
-    font-size: 24px;
-    color: #000000; /* Black */
-    background: #ffffff; /* White */
-    border: 1px solid #000000; /* Black */
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-    margin: 20px auto;
-    max-width: 300px;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 600px) {
-    #djep-content, #djep-guestrequestcontent {
-        width: 95%;
-        max-width: 95%;
-    }
-    .djepm-toplistbuttons {
-        width: 48%;
-        font-size: 12px;
-    }
-}
+/* End of file */
