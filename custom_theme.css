@@ -1,160 +1,98 @@
 
 /* ==================================================================
-   Baker Event Co – Client Portal Custom Theme (SAFE Minimal Overrides)
-   Version: 1.1 (scoped selectors only, no global element overrides)
-   Scope: Only targets #djep-* containers and .djep-* classes
+   Baker Event Co – Client Portal Micro Theme (v1.2)
+   Purpose: Color-only overrides with ultra-safe scoping.
+   Notes:
+   - No margins, padding, width/height, display, or position changes.
+   - No borders added to major containers.
+   - No global element selectors; only #djep-* and .djep-*.
    ================================================================== */
 
-/* 1) Brand tokens */
+/* Brand tokens */
 :root {
   --bec-yellow: #ffde59;
   --bec-black: #000000;
   --bec-white: #ffffff;
-
-  --bec-gray-50:  #fcfcfc;
-  --bec-gray-100: #f6f6f6;
-  --bec-gray-300: #dcdcdc;
-
   --bec-yellow-600: #e6c84f; /* hover */
   --bec-yellow-700: #d1b746; /* active */
 }
 
-/* 2) Typography – scope to portal containers only */
-#djep-page, #djep-content, #djep-navbar,
-#djep-content .djep-welcometextbox,
-#djep-content .djep-eventlistbox,
-#djep-content .djep-latestemailsbox,
-#djep-content .djep-upcomingmeetingsbox {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+/* Typography color only (keep fonts/layout intact) */
+#djep-content, #djep-navbar, #djep-page {
   color: var(--bec-black);
 }
 
-/* Headings scoped */
-#djep-content .djep-h1,
-#djep-content h1.djep-h1,
+/* Title bars: color only */
 #djep-content .djep-titlebar,
 #djep-content .djep-titlebarsmall,
 #djep-content .djep-titlebarsmaller {
-  font-weight: 700;
-  letter-spacing: 0.2px;
   color: var(--bec-black);
+  background-color: var(--bec-white);
+  /* Accent without affecting box model */
+  box-shadow: inset 4px 0 0 0 var(--bec-yellow);
 }
 
-/* 3) Containers – light neutral framing without altering layout widths */
-#djep-content {
-  background: var(--bec-white);
-  /* keep existing padding/margins from framework */
-  /* subtle border only (avoid box-shadow to prevent overflow quirks) */
-  border: 1px solid var(--bec-gray-300);
-  border-radius: 8px;
-}
-
-/* Title bars – use border-left accent instead of pseudo-elements */
-#djep-content .djep-titlebar,
-#djep-content .djep-titlebarsmall,
-#djep-content .djep-titlebarsmaller {
-  background: var(--bec-white);
-  border: 1px solid var(--bec-gray-300);
-  border-left: 4px solid var(--bec-yellow);
-}
-
-/* 4) Navigation – keep structure, just recolor */
+/* Navigation tabs – recolor only */
 #djep-navbar ul#djep-navigation li,
 #djep-navbar ul#djep-navigation li a {
-  background: var(--bec-black);
-  border-color: var(--bec-black);
+  background: var(--bec-black) !important;
+  border-color: var(--bec-black) !important;
+  color: var(--bec-white) !important;
 }
-
-#djep-navbar ul#djep-navigation li a:link,
-#djep-navbar ul#djep-navigation li a:visited {
-  color: var(--bec-white);
-  text-transform: none;
-  letter-spacing: 0.2px;
-  font-weight: 600;
-}
-
 #djep-navbar ul#djep-navigation li a:hover {
-  background: var(--bec-yellow);
-  color: var(--bec-black);
+  background: var(--bec-yellow) !important;
+  color: var(--bec-black) !important;
 }
-
 #djep-navbar ul#djep-navigation li.selected a:link,
 #djep-navbar ul#djep-navigation li.selected a:visited {
-  background: var(--bec-yellow);
-  color: var(--bec-black);
-  border: 1px solid var(--bec-yellow);
+  background: var(--bec-yellow) !important;
+  border-color: var(--bec-yellow) !important;
+  color: var(--bec-black) !important;
 }
 
-/* 5) Buttons – target only known portal button classes */
+/* Primary buttons in content – recolor only */
 #djep-content .djep-planeventbutton,
 #djep-content .djep-eventdetailsbutton,
 #djep-content .djep-readviewbutton,
-#djep-content .djep-paymentbutton {
-  background: var(--bec-yellow);
-  color: var(--bec-black);
-  border: 1px solid var(--bec-yellow);
-  text-shadow: none !important;
-  box-shadow: none !important;
-  border-radius: 8px;
-  font-weight: 700;
+#djep-content .djep-paymentbutton,
+#djep-content .djep-viewallbutton {
+  background: var(--bec-yellow) !important;
+  border-color: var(--bec-yellow) !important;
+  color: var(--bec-black) !important;
 }
-
 #djep-content .djep-planeventbutton:hover,
 #djep-content .djep-eventdetailsbutton:hover,
 #djep-content .djep-readviewbutton:hover,
-#djep-content .djep-paymentbutton:hover {
-  background: var(--bec-yellow-600);
-  border-color: var(--bec-yellow-600);
-  color: var(--bec-black);
+#djep-content .djep-paymentbutton:hover,
+#djep-content .djep-viewallbutton:hover {
+  background: var(--bec-yellow-600) !important;
+  border-color: var(--bec-yellow-600) !important;
+  color: var(--bec-black) !important;
 }
-
 #djep-content .djep-planeventbutton:active,
 #djep-content .djep-eventdetailsbutton:active,
 #djep-content .djep-readviewbutton:active,
-#djep-content .djep-paymentbutton:active {
-  background: var(--bec-yellow-700);
-  border-color: var(--bec-yellow-700);
+#djep-content .djep-paymentbutton:active,
+#djep-content .djep-viewallbutton:active {
+  background: var(--bec-yellow-700) !important;
+  border-color: var(--bec-yellow-700) !important;
 }
 
-/* 6) Tables – gentle header treatment only (avoid row classes that JS toggles) */
-#djep-content .djep-table-headers,
-#djep-content .djep-databasetableheader {
-  background: var(--bec-gray-100);
-  color: var(--bec-black);
-  border-color: var(--bec-gray-300);
-}
+/* Links inside content – color only */
+#djep-content a { color: var(--bec-black); }
+#djep-content a:hover { color: var(--bec-black); text-decoration: underline; }
 
-/* 7) Links – scope to content area only */
-#djep-content a {
-  color: var(--bec-black);
-}
-#djep-content a:hover {
-  color: var(--bec-black);
-  text-decoration: underline;
-}
+/* Email list hover rows – keep existing classes; only subtle color tweak */
+#djep-content .djep-tablehover1 { background-color: rgba(0,0,0,0.06) !important; }
+#djep-content .djep-tablehover2 { background-color: transparent !important; }
 
-/* 8) Email list "view all" button (class present in HTML) */
-#djep-content .djep-viewallbutton {
-  background: var(--bec-yellow);
-  color: var(--bec-black);
-  border: 1px solid var(--bec-yellow);
-  border-radius: 8px;
-  padding: 6px 10px;
-}
-
-/* 9) Status color tokens exist server-side; ensure readability if applied inline */
+/* Status rows – enforce readable text color only */
 #djep-content .djep-balanceduerow,
 #djep-content .djep-totalfeerow,
 #djep-content .djep-totaldepositrow,
 #djep-content .djep-balancepaidrow {
-  color: var(--bec-black);
+  color: var(--bec-black) !important;
 }
 
-/* 10) Countdown wrapper – keep neutral background to avoid contrast issues */
-#djep-countdownclock {
-  background: var(--bec-white);
-  border: 1px solid var(--bec-gray-300);
-  border-radius: 8px;
-}
-
-/* End of SAFE Minimal Overrides */
+/* Countdown wrapper – color only */
+#djep-countdownclock { background-color: var(--bec-white); }
