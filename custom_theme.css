@@ -1,12 +1,8 @@
 
-/* ==================================================================
-   Baker Event Co – Client Portal Micro Theme (v1.2)
-   Purpose: Color-only overrides with ultra-safe scoping.
-   Notes:
-   - No margins, padding, width/height, display, or position changes.
-   - No borders added to major containers.
-   - No global element selectors; only #djep-* and .djep-*.
-   ================================================================== */
+/* =============================================================
+   Baker Event Co – Client Portal Custom Theme (Merged v1.2)
+   Safe Micro-Scoped Overrides (Color-only)
+   ============================================================= */
 
 /* Brand tokens */
 :root {
@@ -96,3 +92,4 @@
 
 /* Countdown wrapper – color only */
 #djep-countdownclock { background-color: var(--bec-white); }
+
