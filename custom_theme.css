@@ -1,270 +1,160 @@
 
-/* =============================================================
-   Baker Event Co – Client Portal Custom Theme (v1.0)
-   Author: ChatGPT
-   Notes:
-   - Safe for portals that block external font imports (no @import).
-   - Designed to be linked via "Custom Theme CSS" URL and load after base CSS.
-   - Uses brand tokens (yellow/black/white) and system font stacks.
-   ============================================================= */
+/* ==================================================================
+   Baker Event Co – Client Portal Custom Theme (SAFE Minimal Overrides)
+   Version: 1.1 (scoped selectors only, no global element overrides)
+   Scope: Only targets #djep-* containers and .djep-* classes
+   ================================================================== */
 
-/* 1) Brand tokens (CSS Variables) */
+/* 1) Brand tokens */
 :root {
   --bec-yellow: #ffde59;
   --bec-black: #000000;
   --bec-white: #ffffff;
 
-  /* Neutrals */
   --bec-gray-50:  #fcfcfc;
   --bec-gray-100: #f6f6f6;
-  --bec-gray-200: #ededed;
   --bec-gray-300: #dcdcdc;
-  --bec-gray-600: #666666;
 
-  /* Interactive shades */
   --bec-yellow-600: #e6c84f; /* hover */
   --bec-yellow-700: #d1b746; /* active */
 }
 
-/* 2) Typography (font-safe: no external imports) */
-body, #djep-content, #djep-guestrequestcontent {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
-  color: var(--bec-black) !important;
-  background: var(--bec-white) !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* 2) Typography – scope to portal containers only */
+#djep-page, #djep-content, #djep-navbar,
+#djep-content .djep-welcometextbox,
+#djep-content .djep-eventlistbox,
+#djep-content .djep-latestemailsbox,
+#djep-content .djep-upcomingmeetingsbox {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  color: var(--bec-black);
 }
 
-/* Headings & title bars use a slightly bolder, modern stack */
-h1, h2, h3,
-.djep-titlebar, .djep-titlebarsmall, .djep-titlebarsmaller {
-  font-family: "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
+/* Headings scoped */
+#djep-content .djep-h1,
+#djep-content h1.djep-h1,
+#djep-content .djep-titlebar,
+#djep-content .djep-titlebarsmall,
+#djep-content .djep-titlebarsmaller {
   font-weight: 700;
   letter-spacing: 0.2px;
-  color: var(--bec-black) !important;
+  color: var(--bec-black);
 }
 
-/* 3) Containers */
-#djep-content, #djep-guestrequestcontent {
-  border: 1px solid var(--bec-gray-300) !important;
-  background: var(--bec-white) !important;
-  box-shadow: rgba(0,0,0,0.08) 0 2px 8px !important;
-  border-radius: 8px !important;
+/* 3) Containers – light neutral framing without altering layout widths */
+#djep-content {
+  background: var(--bec-white);
+  /* keep existing padding/margins from framework */
+  /* subtle border only (avoid box-shadow to prevent overflow quirks) */
+  border: 1px solid var(--bec-gray-300);
+  border-radius: 8px;
 }
 
-/* Section title bars with left accent */
-.djep-titlebar, .djep-titlebarsmall, .djep-titlebarsmaller {
-  background: var(--bec-white) !important;
-  border: 1px solid var(--bec-gray-300) !important;
-  color: var(--bec-black) !important;
-  position: relative;
-}
-.djep-titlebar::before,
-.djep-titlebarsmall::before,
-.djep-titlebarsmaller::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: var(--bec-yellow);
-  border-radius: 4px 0 0 4px;
+/* Title bars – use border-left accent instead of pseudo-elements */
+#djep-content .djep-titlebar,
+#djep-content .djep-titlebarsmall,
+#djep-content .djep-titlebarsmaller {
+  background: var(--bec-white);
+  border: 1px solid var(--bec-gray-300);
+  border-left: 4px solid var(--bec-yellow);
 }
 
-/* 4) Navigation */
-#djep-navbar { max-width: 800px !important; }
-ul#djep-navigation li,
-ul#djep-navigation li a {
-  background: var(--bec-black) !important;
-  border-color: var(--bec-black) !important;
+/* 4) Navigation – keep structure, just recolor */
+#djep-navbar ul#djep-navigation li,
+#djep-navbar ul#djep-navigation li a {
+  background: var(--bec-black);
+  border-color: var(--bec-black);
 }
-ul#djep-navigation li a:link,
-ul#djep-navigation li a:visited {
-  color: var(--bec-white) !important;
-  text-transform: none !important;
-  letter-spacing: 0.2px !important;
+
+#djep-navbar ul#djep-navigation li a:link,
+#djep-navbar ul#djep-navigation li a:visited {
+  color: var(--bec-white);
+  text-transform: none;
+  letter-spacing: 0.2px;
   font-weight: 600;
 }
-ul#djep-navigation li a:hover {
-  background-color: var(--bec-yellow) !important;
-  color: var(--bec-black) !important;
-}
-ul#djep-navigation li.selected a:link,
-ul#djep-navigation li.selected a:visited {
-  background: var(--bec-yellow) !important;
-  color: var(--bec-black) !important;
-  border: 1px solid var(--bec-yellow) !important;
-}
 
-/* 5) Status rows (fees, balances) */
-.djep-balanceduerow,
-.djep-totalfeerow,
-.djep-totaldepositrow,
-.djep-balancepaidrow,
-.djep-totalfeerow span {
-  text-transform: uppercase !important;
-  font-weight: 700 !important;
-  letter-spacing: .3px !important;
-}
-
-.djep-balanceduerow {
-  background-color: var(--bec-yellow) !important;
-  color: var(--bec-black) !important;
-}
-.djep-balancepaidrow {
-  background-color: #eaffd4 !important; /* soft green */
-  color: var(--bec-black) !important;
-}
-.djep-totalfeerow,
-.djep-totalfeerow span {
-  background-color: var(--bec-gray-100) !important;
-  color: var(--bec-black) !important;
-}
-.djep-totaldepositrow {
-  background-color: #ffe3e6 !important; /* soft rose */
-  color: var(--bec-black) !important;
-}
-
-/* 6) Buttons (flat brand style) */
-.djep-planeventbutton,
-.djep-eventdetailsbutton,
-.djep-readviewbutton,
-.djep-searchbutton,
-.djep-actionbutton,
-.djep-logoutbutton,
-.djep-clipboardbutton,
-.djep-songideabutton,
-.djep-toplistbuttons,
-.djep-toplistbuttons2,
-.djep-toplistbuttons3,
-.djep-toplistbuttons4,
-.djep-toplistbuttons5,
-.djep-specialsongbutton,
-.djep-paymentbutton,
-button, .button, [type="button"], [type="submit"] {
-  background: var(--bec-yellow) !important;
-  color: var(--bec-black) !important;
-  border: 1px solid var(--bec-yellow) !important;
-  text-shadow: none !important;
-  box-shadow: none !important;
-  border-radius: 8px !important;
-  font-weight: 700 !important;
-  cursor: pointer;
-}
-
-.djep-planeventbutton:hover,
-.djep-eventdetailsbutton:hover,
-.djep-readviewbutton:hover,
-.djep-searchbutton:hover,
-.djep-actionbutton:hover,
-.djep-logoutbutton:hover,
-.djep-clipboardbutton:hover,
-.djep-songideabutton:hover,
-.djep-toplistbuttons:hover,
-.djep-toplistbuttons2:hover,
-.djep-toplistbuttons3:hover,
-.djep-toplistbuttons4:hover,
-.djep-toplistbuttons5:hover,
-.djep-specialsongbutton:hover,
-.djep-paymentbutton:hover,
-button:hover, .button:hover, [type="button"]:hover, [type="submit"]:hover {
-  background: var(--bec-yellow-600) !important;
-  border-color: var(--bec-yellow-600) !important;
-  color: var(--bec-black) !important;
-}
-.djep-planeventbutton:active,
-.djep-eventdetailsbutton:active,
-.djep-readviewbutton:active,
-.djep-searchbutton:active,
-.djep-actionbutton:active,
-.djep-logoutbutton:active,
-.djep-clipboardbutton:active,
-.djep-songideabutton:active,
-.djep-toplistbuttons:active,
-.djep-toplistbuttons2:active,
-.djep-toplistbuttons3:active,
-.djep-toplistbuttons4:active,
-.djep-toplistbuttons5:active,
-.djep-specialsongbutton:active,
-.djep-paymentbutton:active,
-button:active, .button:active, [type="button"]:active, [type="submit"]:active {
-  background: var(--bec-yellow-700) !important;
-  border-color: var(--bec-yellow-700) !important;
-}
-
-/* 7) Inputs */
-input, select, textarea, .djep-musicsearchform,
-input.djep-input, select.djep-select, textarea.djep-textarea {
-  border: 1px solid var(--bec-gray-300) !important;
-  background: var(--bec-white) !important;
-  color: var(--bec-black) !important;
-}
-input:focus, select:focus, textarea:focus, .djep-musicsearchform:focus,
-input.djep-input:focus, select.djep-select:focus, textarea.djep-textarea:focus {
-  outline: 3px solid var(--bec-yellow) !important;
-  outline-offset: 1px;
-}
-
-/* 8) Music selections / tabs */
-.djep-requestonlytitle,
-.djep-music_selections_navigation {
-  background: var(--bec-white) !important;
-  border: 1px solid var(--bec-gray-300) !important;
-}
-.djep-music_selections_navigation li a {
-  background: var(--bec-white) !important;
-  border: 1px solid transparent !important;
-  color: var(--bec-black) !important;
-  font-weight: 600;
-}
-.djep-music_selections_navigation li a:hover {
-  border-color: var(--bec-yellow) !important;
-  background: var(--bec-yellow) !important;
-  color: var(--bec-black) !important;
-}
-.djep-music_selections_navigation-active a {
-  background: var(--bec-yellow) !important;
-  border-color: var(--bec-yellow) !important;
-  color: var(--bec-black) !important;
-}
-
-/* 9) Tables */
-.djep-table-headers, .djep-databasetableheader {
-  background: var(--bec-gray-100) !important;
-  color: var(--bec-black) !important;
-  border-color: var(--bec-gray-300) !important;
-}
-.djep-odd { background: #fafafa !important; }
-.djep-even { background: #ffffff !important; }
-.djep-tablehover { background-color: rgba(0,0,0,0.06) !important; }
-
-/* 10) Alerts / notices */
-.djep-titlebarsmallalert {
-  background-color: #ffe3e6 !important;
-  color: var(--bec-black) !important;
-}
-.djep-titlebarconfirm, .djep-titlebarmusicconfirm {
-  background: #eaffd4 !important;
-  color: var(--bec-black) !important;
-  border: 1px solid var(--bec-gray-300) !important;
-}
-.djep-titlebarnotices {
-  background: #fffbe6 !important;
-  color: var(--bec-black) !important;
-  border: 2px solid var(--bec-yellow) !important;
-}
-
-/* 11) Links */
-a { color: var(--bec-black) !important; }
-a:hover { color: var(--bec-black) !important; text-decoration: underline; }
-
-/* 12) Utilities */
-.bec-pill {
-  display: inline-block;
-  padding: 6px 10px;
-  border-radius: 9999px;
+#djep-navbar ul#djep-navigation li a:hover {
   background: var(--bec-yellow);
   color: var(--bec-black);
-  font-weight: 700;
+}
+
+#djep-navbar ul#djep-navigation li.selected a:link,
+#djep-navbar ul#djep-navigation li.selected a:visited {
+  background: var(--bec-yellow);
+  color: var(--bec-black);
   border: 1px solid var(--bec-yellow);
 }
-/* End of file */
+
+/* 5) Buttons – target only known portal button classes */
+#djep-content .djep-planeventbutton,
+#djep-content .djep-eventdetailsbutton,
+#djep-content .djep-readviewbutton,
+#djep-content .djep-paymentbutton {
+  background: var(--bec-yellow);
+  color: var(--bec-black);
+  border: 1px solid var(--bec-yellow);
+  text-shadow: none !important;
+  box-shadow: none !important;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+#djep-content .djep-planeventbutton:hover,
+#djep-content .djep-eventdetailsbutton:hover,
+#djep-content .djep-readviewbutton:hover,
+#djep-content .djep-paymentbutton:hover {
+  background: var(--bec-yellow-600);
+  border-color: var(--bec-yellow-600);
+  color: var(--bec-black);
+}
+
+#djep-content .djep-planeventbutton:active,
+#djep-content .djep-eventdetailsbutton:active,
+#djep-content .djep-readviewbutton:active,
+#djep-content .djep-paymentbutton:active {
+  background: var(--bec-yellow-700);
+  border-color: var(--bec-yellow-700);
+}
+
+/* 6) Tables – gentle header treatment only (avoid row classes that JS toggles) */
+#djep-content .djep-table-headers,
+#djep-content .djep-databasetableheader {
+  background: var(--bec-gray-100);
+  color: var(--bec-black);
+  border-color: var(--bec-gray-300);
+}
+
+/* 7) Links – scope to content area only */
+#djep-content a {
+  color: var(--bec-black);
+}
+#djep-content a:hover {
+  color: var(--bec-black);
+  text-decoration: underline;
+}
+
+/* 8) Email list "view all" button (class present in HTML) */
+#djep-content .djep-viewallbutton {
+  background: var(--bec-yellow);
+  color: var(--bec-black);
+  border: 1px solid var(--bec-yellow);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+/* 9) Status color tokens exist server-side; ensure readability if applied inline */
+#djep-content .djep-balanceduerow,
+#djep-content .djep-totalfeerow,
+#djep-content .djep-totaldepositrow,
+#djep-content .djep-balancepaidrow {
+  color: var(--bec-black);
+}
+
+/* 10) Countdown wrapper – keep neutral background to avoid contrast issues */
+#djep-countdownclock {
+  background: var(--bec-white);
+  border: 1px solid var(--bec-gray-300);
+  border-radius: 8px;
+}
+
+/* End of SAFE Minimal Overrides */
