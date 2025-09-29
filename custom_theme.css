@@ -1,0 +1,301 @@
+@charset "utf-8";
+/* Custom Theme for Client Portal - Based on stylesheet_djep_1_.css */
+/* Branding: Primary Yellow (#ffde59), Black (#000000), White (#ffffff) */
+/* Typography: Poppins for headings, Open Sans for body text */
+/* Tone: Friendly, approachable, professional */
+
+@import url(https://djep21.com/clients/includes/stylesheet_updates.css);
+
+/* General Layout */
+html {overflow-y: scroll; text-decoration: none;}
+a {text-decoration: none;}
+.djep-cursorpointer {cursor: pointer;}
+
+body.djep-body {
+    padding: 0;
+    width: 100%;
+    height: auto !important;
+    height: 100%;
+    min-height: 100%;
+    color: #000000; /* Black */
+    background-color: #ffde59; /* Primary Yellow */
+    background-repeat: repeat-x;
+    background-position: top left;
+    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px; /* Increased for readability */
+    margin: 0;
+}
+
+#djep-page, #djep-guestrequestpage {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: auto !important;
+}
+
+#djep-content, #djep-guestrequestcontent {
+    border: 1px solid #000000; /* Black */
+    padding: 10px;
+    text-align: left;
+    margin: 0 auto;
+    width: 800px; /* VERY IMPORTANT - DNE */
+    border-radius: 8px; /* Softer corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background: #ffffff; /* White - VERY IMPORTANT - DNE */
+    overflow: hidden;
+}
+
+#djep-header {
+    text-align: center;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Navigation Bar */
+#djep-navbar {margin: 0 auto; width: 800px;}
+ul#djep-navigation {
+    height: 36px;
+    margin: 0 auto;
+    padding: 20px 10px 0 10px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+}
+
+ul#djep-navigation li {
+    border-radius: 8px; /* Softer corners */
+    float: left;
+    width: 104px;
+    margin: 0 5px 0 0;
+    background-color: #ffde59; /* Primary Yellow */
+    border: solid 1px #000000; /* Black */
+    position: relative;
+    z-index: 1;
+    list-style: none;
+}
+
+ul#djep-navigation li a:link, ul#djep-navigation li a:visited {
+    border-radius: 8px;
+    display: block;
+    text-align: center;
+    width: 104px;
+    height: 40px;
+    line-height: 38px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 13px; /* Slightly larger */
+    font-weight: bold;
+    color: #000000; /* Black */
+    letter-spacing: 1px;
+    outline: none;
+    float: left;
+    background: #ffde59; /* Primary Yellow */
+    transition: background-color 0.3s ease;
+}
+
+ul#djep-navigation li a:hover {
+    background-color: #ffffff; /* White on hover */
+    color: #000000; /* Black */
+}
+
+/* Typography */
+h1.djep-h1 {
+    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 34px; /* Slightly larger */
+    color: #000000; /* Black */
+    margin: 21px 0;
+}
+h2.djep-h2 {
+    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+    font-size: 26px; /* Slightly larger */
+    color: #000000; /* Black */
+    margin: 21px 0;
+}
+h3.djep-h3 {
+    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+    font-size: 20px; /* Slightly larger */
+    color: #000000; /* Black */
+}
+p.djep-p-standard {
+    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5; /* Improved readability */
+}
+
+/* Title Bars */
+.djep-titlebar {
+    display: block;
+    width: 96%;
+    background-color: #ffde59; /* Primary Yellow */
+    border-color: #000000; /* Black */
+    border-style: solid;
+    border-width: 1px 0;
+    font-weight: bold;
+    margin: 20px auto;
+    padding: 12px 20px; /* Slightly more padding */
+    font-size: 16px; /* Larger for approachability */
+    color: #000000; /* Black */
+}
+
+/* Form Elements */
+#djep-form-div {
+    background-color: #ffffff; /* White */
+    padding: 15px;
+    border-radius: 4px;
+}
+input.djep-input, select.djep-select, textarea.djep-textarea {
+    vertical-align: middle;
+    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px; /* Larger for readability */
+}
+
+.djep-submit input {
+    width: 60px; /* Slightly wider */
+    padding: 10px 15px;
+    background: #ffde59; /* Primary Yellow */
+    border: 1px solid #000000; /* Black */
+    font-size: 14px;
+    color: #000000; /* Black */
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+/* Playlist and Music Sections */
+.djep-playlistbox {background-color: #ffffff; /* White */ text-align: left;}
+.djep-playlistboxmustplay {background-color: #fff8e1; /* Light yellow tint */ text-align: left;}
+.djep-playlistboxdonotplay {background-color: #ffebeb; /* Light red tint */ text-align: left;}
+.djep-playlistboxplayifposs {background-color: #f5f5f5; /* Light gray */ text-align: left;}
+.djep-playlistboxdedications {background-color: #f0f7ff; /* Light blue tint */ text-align: left;}
+.djep-playlistboxonlyrequest {background-color: #f3e8ff; /* Light purple tint */ text-align: left;}
+
+/* Buttons */
+.djep-planeventbutton {
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background: linear-gradient(to bottom, #ffde59, #ffcb33); /* Primary Yellow gradient */
+    border-radius: 6px;
+    border: 1px solid #000000; /* Black */
+    display: inline-block;
+    color: #000000; /* Black */
+    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 25px;
+    margin-top: -5px;
+    text-align: center;
+    text-decoration: none;
+}
+.djep-planeventbutton:hover {
+    background: linear-gradient(to bottom, #ffcb33, #ffde59); /* Reverse gradient */
+}
+.djep-planeventbutton:active {
+    position: relative;
+    top: 1px;
+}
+
+/* Mobile Styles */
+.djepm-toplistbuttons {
+    background: linear-gradient(to bottom, #ffde59, #ffcb33); /* Primary Yellow gradient */
+    border: 1px solid #000000; /* Black */
+    display: inline-block;
+    color: #000000; /* Black */
+    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    width: 31%;
+    height: 28px;
+    padding-top: 6px;
+    margin-top: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 6px;
+}
+.djepm-toplistbuttons:hover {
+    background: linear-gradient(to bottom, #ffcb33, #ffde59); /* Reverse gradient */
+    color: #000000;
+}
+
+/* Event, Email, and Meetings Boxes */
+.djep-eventlistbox {
+    background: #ffffff; /* White */
+    border: 1px solid #000000; /* Black */
+    border-radius: 4px;
+    color: #000000;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.djep-latestemailsbox {
+    background: #ffffff; /* White */
+    border: 1px solid #000000; /* Black */
+    border-radius: 4px;
+    color: #000000;
+    margin-bottom: 20px;
+    overflow: hidden;
+    width: 48%;
+    float: left;
+    margin: 5px;
+}
+.djep-latestemailsbox a {
+    background: linear-gradient(to bottom, #ffde59, #ffcb33); /* Primary Yellow gradient */
+    border: 1px solid #000000; /* Black */
+    border-radius: 6px;
+    color: #000000;
+    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    padding: 6px 12px;
+    text-decoration: none;
+}
+.djep-latestemailsbox a:hover {
+    background: linear-gradient(to bottom, #ffcb33, #ffde59);
+}
+.djep-latestemailsbox table tr {
+    background: #ffffff; /* White */
+    color: #000000; /* Black */
+    font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+}
+.djep-latestemailsbox table tr:hover {
+    background: #fff8e1; /* Light yellow tint */
+}
+.djep-upcomingmeetingsbox {
+    background: #ffffff; /* White */
+    border: 1px solid #000000; /* Black */
+    border-radius: 4px;
+    color: #000000;
+    margin-bottom: 20px;
+    overflow: hidden;
+    width: 48%;
+    float: left;
+    margin: 5px;
+}
+
+/* Countdown Timer */
+#djep-countdownclock {
+    font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+    font-size: 24px;
+    color: #000000; /* Black */
+    background: #ffffff; /* White */
+    border: 1px solid #000000; /* Black */
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 300px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    #djep-content, #djep-guestrequestcontent {
+        width: 95%;
+        max-width: 95%;
+    }
+    .djepm-toplistbuttons {
+        width: 48%;
+        font-size: 12px;
+    }
+}
